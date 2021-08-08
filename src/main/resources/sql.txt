@@ -6,12 +6,24 @@ create table users
     name               text not null,
     surname            text not null,
     email              text not null,
-    profession         text,
-    education          text,
-    work_experience    text,
-    current_work       text,
-    interested_courses text, /*to do*/
-    role               lms_role
+    password           text not null,
+    role               lms_role not null
+);
+
+create table teacher_description (
+    profession text not null,
+    education_background text,
+    user_id int unique not null references users (id)
+
+);
+
+create table student_description (
+    profession text not null,
+    education_background text,
+    work_experience text,
+    current_workplace text,
+    interested_courses text,
+    user_id int unique not null references users (id)
 );
 
 create table courses
@@ -21,22 +33,43 @@ create table courses
     teacher_id int references users (id)
 );
 
-create table lesson
+create table lessons
 (
     id           serial primary key,
     name         text not null,
     description  text,
-    created_time date
+    created_time date,
+    course_id int not null references courses (id)
 );
 
 create table file
 (
-    id serial primary key
+    id serial primary key,
+    path text not null,
+    lesson_id int not null references lessons (id)
 
 );
 
+create table external_resources
+(
+    id serial primary key,
+    link text not null,
+    lesson_id int not null references lessons (id)
+
+);
+
+
+create table quizzes
+(
+    id serial primary key,
+    lesson_id int not null references lessons (id)
+
+);
+
+
 create table enrollments
 (
-    student_id int references users (id), -- check ((select role from users where id = student_id) = 'student')
+    student_id int references users (id),
+    -- checki pah vor anpayman student - y menak enroll lini
     course_id  int references courses (id)
 );
