@@ -1,0 +1,42 @@
+create type lms_role as enum ('student', 'teacher');
+
+create table users
+(
+    id                 serial primary key,
+    name               text not null,
+    surname            text not null,
+    email              text not null,
+    profession         text,
+    education          text,
+    work_experience    text,
+    current_work       text,
+    interested_courses text, /*to do*/
+    role               lms_role
+);
+
+create table courses
+(
+    id         serial primary key,
+    name       text not null,
+    teacher_id int references users (id)
+);
+
+create table lesson
+(
+    id           serial primary key,
+    name         text not null,
+    description  text,
+    created_time date
+);
+
+create table file
+(
+    id serial primary key
+
+);
+
+create table enrollments
+(
+    student_id int references users (id), -- check ((select role from users where id = student_id) = 'student')
+    course_id  int references courses (id)
+);
