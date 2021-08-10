@@ -1,9 +1,12 @@
 package lmsProg.model;
 
 public enum Lms_role {
-    STUDENT ("student"),
-    TEACHER ("teacher");
+    STUDENT ,
+    TEACHER;
 
-    private Lms_role(String value) {
-    }
+//    private Lms_role(String value) {
+//    }
+
+//    Lms_role(String teacher) {
+//    }
 }
