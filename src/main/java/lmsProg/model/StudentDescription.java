@@ -19,6 +19,4 @@ public class StudentDescription implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id", referencedColumnName = "Id")
     private Users userId;
-
-
 }

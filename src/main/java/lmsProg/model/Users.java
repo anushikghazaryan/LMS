@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -34,4 +35,6 @@ public class Users {
     @OneToOne(mappedBy = "userId")
     private StudentDescription studentDescription;
 
+    @OneToMany(mappedBy = "teacher")
+    private List<Courses> course;
 }
