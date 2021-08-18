@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,8 +16,12 @@ public class Courses {
     private Integer id;
     @Column
     private String name;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher_id", referencedColumnName = "Id")
     private Users teacher;
+
+    @OneToMany(mappedBy = "course")
+    private List<Lessons> lessons;
 
 }

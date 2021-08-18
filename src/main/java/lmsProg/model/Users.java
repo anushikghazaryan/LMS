@@ -26,6 +26,7 @@ public class Users {
     @Column
     private String password;
     @Column
+    // casti manramasnery Vaheic harcnenq
     @Enumerated(EnumType.STRING)
     private Lms_role role;
 
@@ -36,5 +37,5 @@ public class Users {
     private StudentDescription studentDescription;
 
     @OneToMany(mappedBy = "teacher")
-    private List<Courses> course;
+    private List<Courses> courses;
 }
