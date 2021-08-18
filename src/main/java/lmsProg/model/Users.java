@@ -38,4 +38,11 @@ public class Users {
 
     @OneToMany(mappedBy = "teacher")
     private List<Courses> courses;
+
+    @ManyToMany
+    @JoinTable(
+            name = "enrollments",
+            joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "Id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "Id"))
+    private List<Courses> enrollCourses;
 }
