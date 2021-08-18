@@ -10,6 +10,8 @@ create table users
     role               lms_role not null
 );
 
+create cast (character varying as lms_role) with inout as implicit;
+
 create table teacher_description (
     profession text not null,
     education_background text,

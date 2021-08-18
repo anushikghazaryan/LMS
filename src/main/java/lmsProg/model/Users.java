@@ -31,5 +31,7 @@ public class Users {
     @OneToOne(mappedBy = "userId")
     private TeacherDescription teacherDescription;
 
+    @OneToOne(mappedBy = "userId")
+    private StudentDescription studentDescription;
 
 }
