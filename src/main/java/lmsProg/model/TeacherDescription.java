@@ -17,6 +17,6 @@ public class TeacherDescription implements Serializable {
     @Id
     @OneToOne(cascade = CascadeType.ALL) //inchi hamar
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Users userId;
+    private User userId;
 
 }

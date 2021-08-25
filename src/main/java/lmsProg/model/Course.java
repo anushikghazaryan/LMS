@@ -1,6 +1,5 @@
 package lmsProg.model;
 
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Courses {
+@Table(name = "courses")
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -19,12 +19,12 @@ public class Courses {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher_id", referencedColumnName = "Id")
-    private Users teacher;
+    private User teacher;
 
     @OneToMany(mappedBy = "course")
-    private List<Lessons> lessons;
+    private List<Lesson> lessons;
 
     @ManyToMany(mappedBy = "enrollCourses")
-    private List<Users> users;
+    private List<User> users;
 
 }

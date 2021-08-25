@@ -10,7 +10,8 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-public class Users {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,12 +38,12 @@ public class Users {
     private StudentDescription studentDescription;
 
     @OneToMany(mappedBy = "teacher")
-    private List<Courses> courses;
+    private List<Course> courses;
 
     @ManyToMany
     @JoinTable(
             name = "enrollments",
             joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "Id"),
             inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "Id"))
-    private List<Courses> enrollCourses;
+    private List<Course> enrollCourses;
 }
