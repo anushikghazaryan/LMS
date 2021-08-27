@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository {
-   Optional<User> findUsersByUserName(String username);
+public interface UserRepository extends org.springframework.data.repository.Repository<User, Integer> {
+   Optional<User> findUsersByName(String username);
 }

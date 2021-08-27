@@ -10,9 +10,9 @@ import java.util.Arrays;
 public class LmsApp {
     public static void main(String[] args) {
 
-        System.out.println(new LmsApp().
-                );
-        Arrays.asList(new SimpleGrantedAuthority(role.toString()));
+//        System.out.println(new LmsApp().
+//                );
+//        Arrays.asList(new SimpleGrantedAuthority(role.toString()));
         SpringApplication.run(LmsApp.class, args);
     }
 }
